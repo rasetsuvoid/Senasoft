@@ -4,11 +4,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PermissionManagement.MVC</title>
+    <link href="~/css/paper-dashboard.css?v=2.0.1" rel="stylesheet" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body id="fondo" class="my-login-page">
-        <header>
+        <!--<header>
             <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
                 <div class="container">
                     <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FileOrganiceSoft</a>
@@ -35,14 +36,21 @@
                     </div>
                 </div>
             </nav>
-        </header>
-
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
+        </header>-->
+        <div class="wrapper">
+            <div class="sidebar" data-color="white" data-active-color="danger">
+                <div class="logo">
+                    <a href="#" class="simple-text logo-normal">
+                        FileOrganizerSoft
+                    </a>
+                </div>
+            </div>
+            <div class="container">
+                <main role="main" class="pb-3">
+                    @RenderBody()
+                </main>
+            </div>
         </div>
-    
 
     <footer class="border-top footer text-muted">
         <div class="container">
