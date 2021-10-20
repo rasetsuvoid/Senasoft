@@ -1,0 +1,88 @@
+﻿@model Senasoft.Models.FacturasModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<script>
+    function ShowPreviewPDF(input) {
+        if (input.files && input.files[0]) {
+            var extension = input.files[0].name.split('.').pop().toLowerCase();
+            var ImageDir = new FileReader();
+            ImageDir.onload = function (e) {
+                if (extension == 'pdf') {
+                    $("#imgPDF").attr('src', '');
+                    $("#iframeimgPDF").attr('src', e.target.result);
+                    $("#iframeimgPDF").attr('width', '100%');
+                    $("#iframeimgPDF").attr('Height', '100%');
+                }
+            }
+            ImageDir.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
+
+
+<h1>Create</h1>
+
+<h4>User</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+
+
+        <form asp-action="Create" enctype="multipart/form-data" method="post">
+
+            <!--<div asp-validation-summary="ModelOnly" class="text-danger"></div>-->
+            @*            <div class="form-group">
+                    <label asp-for="MNumber" class="control-label"></label>
+                    <input asp-for="MNumber" class="form-control" />
+                    <span asp-validation-for="MNumber" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" value="@User.Identity.Name"/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Resume" class="control-label"></label>
+                @*                <input asp-for="Resume" class="form-control" />
+                *@                <input type="file" name="file" class="form-control-file" onchange="ShowPreviewPDF(this)" />
+                <span asp-validation-for="Resume" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="IdFactura" class="control-label"></label>
+                <select asp-for="IdFactura" class="form-control">
+                    <option value="1">Factura</option>
+                    <option value="2">Cedula</option>
+                    <option value="3">PDF</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" id="Create" value="Create" class="btn btn-danger" />
+            </div>
+
+
+        </form>
+    </div>
+    <div class="col-md-8">
+        <img id="imgPDF" width="100%" />
+        <iframe width="100%" height="100%" id="iframeimgPDF"></iframe>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
