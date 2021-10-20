@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace PermissionManagement.MVC.Controllers
+namespace Senasoft.Controllers
 {
 public class ProductController : Controller
 {
