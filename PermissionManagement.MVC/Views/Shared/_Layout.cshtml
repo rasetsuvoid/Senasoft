@@ -6,48 +6,77 @@
     <title>PermissionManagement.MVC</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/paper-dashboard.css?v=2.0.1" />
 </head>
 <body id="fondo" class="my-login-page">
-        <header>
-            <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-                <div class="container">
-                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">FileOrganiceSoft</a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                            aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                        <ul class="navbar-nav flex-grow-1">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Users" asp-action="Index">Users</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Roles" asp-action="Index">Roles</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" asp-controller="Product" asp-action="Index">Products</a>
-                            </li>
-                        </ul>
-                        <partial name="_LoginPartial" />
+    <div class="sidebar" data-color="white" data-active-color="danger">
+        <div class="logo">
+            <a href="#" class="simple-text logo-normal">
+                FileOrganizerSoft
+            </a>
+        </div>
+        <div class="sidebar-wrapper">
+            <ul class="nav">
+                <li class="active ">
+                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Index"><p>Home</p></a>
+                </li>
+                <li>
+                    <a class="nav-link text-dark" asp-controller="Users" asp-action="Index">Users</a>
+                </li>
+                <li>
+                    <a class="nav-link text-dark" asp-controller="Roles" asp-action="Index">Roles</a>
+                    <a href="javascript:;">
+                        <!--i class="nc-icon nc-diamond"></i-->
+                        <p>Second Item</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;">
+                        <!--i class="nc-icon nc-pin-3"></i-->
+                        <p>Third Item</p>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!--div class="container"-->
+    <div class="main-panel" style="height: 100vh;">
+        <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+            <div class="container-fluid">
+                <div class="navbar-wrapper">
+                    <div class="navbar-toggle">
+                        <button type="button" class="navbar-toggler">
+                            <span class="navbar-toggler-bar bar1"></span>
+                            <span class="navbar-toggler-bar bar2"></span>
+                            <span class="navbar-toggler-bar bar3"></span>
+                        </button>
                     </div>
+                    <a class="navbar-brand" href="javascript:;">Title</a>
                 </div>
-            </nav>
-        </header>
-
-        <div class="container">
-            <main role="main" class="pb-3">
-                @RenderBody()
-            </main>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                    <span class="navbar-toggler-bar navbar-kebab"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navigation">
+                    <partial name="_LoginPartial" />
+                </div>
+            </div>
+        </nav>
+        <!-- End Navbar -->
+        <div class="content">
+            <div class="row">
+                <div class="col-md-12">
+                    <main role="main" class="pb-3">
+                        @RenderBody()
+                    </main>
+                </div>
+            </div>
         </div>
-    
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - PermissionManagement.MVC - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-        </div>
+    </div>
+    <footer class="border-top footer text-muted text-center">
+        
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
