@@ -29,8 +29,10 @@ namespace Senasoft.Data
             });
             // Es obligatorio especificar que la tabla intermedia tiene una clave
             // primaria compuesta
+            
 
-        }
-
+    }
+        public DbSet<FacturasModel> facturas { get; set; }
+        public DbSet<TiposFacturasModel> TiposFacturas { get; set; }
     }
 }
