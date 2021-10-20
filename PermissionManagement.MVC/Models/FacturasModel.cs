@@ -11,16 +11,10 @@ namespace Senasoft.Models
     public class FacturasModel
     {
         [Key]
-        [Required(ErrorMessage = "Este campo es requerido")]
-        [RegularExpression(@"\d{8}")]
         public int Id { get; set; }
 
         [DisplayName("Primer Nombre")]
         public string FirstName { get; set; }
-
-        [Required(ErrorMessage = "Last name is required")]
-        [DisplayName("Segundo Nombre")]
-        public string LastName { get; set; }
 
         public string Resume { get; set; }
         public int IdFactura { get; set; }
