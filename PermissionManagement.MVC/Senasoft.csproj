@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="IronPython" Version="2.7.11" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="5.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.11" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.11" />
@@ -22,8 +23,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Uploads\Factura\" />
-    <Folder Include="Uploads\Cedulas\" />
+    <Folder Include="Uploads\FacturaElectronica\" />
+    <Folder Include="Uploads\Desconocido\" />
+    <Folder Include="Uploads\CuentasCobro\" />
+    <Folder Include="Uploads\Nota_Debito\" />
+    <Folder Include="Uploads\Nota_credito\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
