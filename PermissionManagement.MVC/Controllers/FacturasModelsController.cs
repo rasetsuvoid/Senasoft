@@ -1,12 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using IronPython.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Scripting.Hosting;
 using Senasoft.Data;
 using Senasoft.Models;
 
@@ -46,6 +47,16 @@ namespace Senasoft.Controllers
 
             return View(facturasModel);
         }
+        //
+        public IActionResult Inteligencia()
+        {
+            var ipy = Python.CreateRuntime();
+            var path = @"pipo.py";
+            dynamic op = ipy.UseFile(path);
+
+            return RedirectToAction(nameof(Index));
+        }
+       
 
         // GET: FacturasModels/Create
         public IActionResult Create()
