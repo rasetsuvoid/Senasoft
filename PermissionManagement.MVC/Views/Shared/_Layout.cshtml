@@ -17,27 +17,17 @@
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
-                <li class="active ">
-                    <a class="nav-link text-dark" asp-controller="Home" asp-action="Index"><p>Home</p></a>
+                <li>
+                    <a class="nav-link text-dark menu" asp-controller="Home" asp-action="Index"><p>Inicio</p></a>
                 </li>
                 <li>
-                    <a class="nav-link text-dark" asp-controller="Users" asp-action="Index">Users</a>
+                    <a class="nav-link text-dark menu" asp-controller="Users" asp-action="Index">Usuarios</a>
                 </li>
                 <li>
-                    <a class="nav-link text-dark" asp-controller="FacturasModels" asp-action="Index">Users</a>
+                    <a class="nav-link text-dark menu" asp-controller="FacturasModels" asp-action="Index">Facturas</a>
                 </li>
                 <li>
-                    <a class="nav-link text-dark" asp-controller="Roles" asp-action="Index">Roles</a>
-                    <a href="javascript:;">
-                        <!--i class="nc-icon nc-diamond"></i-->
-                        <p>Second Item</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="javascript:;">
-                        <!--i class="nc-icon nc-pin-3"></i-->
-                        <p>Third Item</p>
-                    </a>
+                    <a class="nav-link text-dark menu" asp-controller="Roles" asp-action="Index">Roles</a>
                 </li>
             </ul>
         </div>
@@ -55,7 +45,6 @@
                             <span class="navbar-toggler-bar bar3"></span>
                         </button>
                     </div>
-                    <a class="navbar-brand" href="javascript:;">Title</a>
                 </div>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -79,11 +68,19 @@
         </div>
     </div>
     <footer class="border-top footer text-muted text-center">
-        
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/core/jquery.min.js"></script>
+    <script src="~/js/core/popper.min.js"></script>
+    <script src="~/js/plugins/perfect-scrollbar.jquery.min.js"></script>
+    <!-- Chart JS -->
+    <script src="~/js/plugins/chartjs.min.js"></script>
+    <!--  Notifications Plugin    -->
+    <script src="~/js/plugins/bootstrap-notify.js"></script>
+    <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
+    <script src="~/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
