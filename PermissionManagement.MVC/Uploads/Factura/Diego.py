@@ -1,25 +1,24 @@
-import re
-import fitz
-import os
-import shutil
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
 import sys
 sys.path.append("C:\Program Files")
 sys.path.append("C:\Program Files\IronPython 2.7")
 sys.path.append("C:\Program Files\IronPython 2.7\Lib")
+import re
+import fitz
+import os
+import shutil
 
 
-
-Listar = (r"Senasoft\PermissionManagement.MVC\Uploads\Factura")
+Listar = (r"C:\Users\SENA\Documents\GitHub\Senasoft\PermissionManagement.MVC\Uploads\Factura")
 archivos = os.listdir(Listar)
 
 #pdf_documento="archivos"
-Facturas = (r"Uploads\FacturaElectronica")
-notaCredito =(r"Uploads\Nota_credito")
-notaDebito = (r"Uploads\Nota_Debito")
-desconocido = (r"Uploads\Desconocido")
-cuentasCobro = (r"Uploads\CuentasCobro")
+Facturas = (r"C:\Users\SENA\Documents\GitHub\Senasoft\PermissionManagement.MVC\Uploads\FacturaElectronica")
+notaCredito =(r"C:\Users\SENA\Documents\GitHub\Senasoft\PermissionManagement.MVC\Uploads\Nota_credito")
+notaDebito = (r"C:\Users\SENA\Documents\GitHub\Senasoft\PermissionManagement.MVC\Uploads\Nota_Debito")
+desconocido = (r"C:\Users\SENA\Documents\GitHub\Senasoft\PermissionManagement.MVC\Uploads\Desconocido")
+cuentasCobro = (r"C:\Users\SENA\Documents\GitHub\Senasoft\PermissionManagement.MVC\Uploads\CuentasCobro")
 
 
 
@@ -33,25 +32,26 @@ for xd in archivos:
         buscar=re.findall(r'Factura Electrónica de Venta', text)
         #NotaC=re.findall(r'Factura', text)
         documento = ""
+        data = r"{}/{}".format(Listar,xd)
         #print(buscar)
         if len(re.findall(r'Factura Electrónica de Venta', text)) > 0 or len(re.findall(r'Factura Electrónica de venta', text)) > 0 or len(re.findall(r'FACTURA ELECTRONICA DE VENTA', text)) > 0 or len(re.findall(r'FACTURA ELECTRÓNICA DE VENTA', text)) > 0 : 
-            new_route = shutil.move(f"{Listar}/{xd}",Facturas)
+            new_route = shutil.move(data,Facturas)
             text = "" 
             documento = ""
         elif len(re.findall(r'Nota crédito', text)) > 0 : 
-            new_route = shutil.move(f"{Listar}/{xd}",notaCredito)
+            new_route = shutil.move(data,notaCredito)
             text = "" 
             documento = ""
         elif len(re.findall(r'Nota débito', text)) > 0 : 
-            new_route = shutil.move(f"{Listar}/{xd}",notaDebito)
+            new_route = shutil.move(data,notaDebito)
             text = "" 
             documento = ""
         elif len(re.findall(r'Cuentas de cobro', text)) > 0 : 
-            new_route = shutil.move(f"{Listar}/{xd}",cuentasCobro)
+            new_route = shutil.move(data,cuentasCobro)
             text = "" 
             documento = ""
         else:
-            new_route = shutil.move(f"{Listar}/{xd}",desconocido)
+            new_route = shutil.move(data,desconocido)
             text = "" 
             documento = ""
 
