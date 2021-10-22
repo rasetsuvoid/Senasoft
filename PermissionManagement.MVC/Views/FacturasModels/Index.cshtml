@@ -1,21 +1,23 @@
 ﻿@model IEnumerable<Senasoft.Models.FacturasModel>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Documentos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Index</h1>
+<h1>Documentos</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-    
-</p>
-<form asp-action="Inteligencia" enctype="multipart/form-data" method="post">
-    <div class="form-group">
-        <input type="submit" id="Inteligencia" value="Inteligencia" class="btn btn-danger" />
+<div class="row">
+    <div class="col-md-3"><p><a asp-action="Create" class="btn btn-warning">Cargar documento</a></p></div>
+    <div class="col-md-3">
+        <form asp-action="Inteligencia" enctype="multipart/form-data" method="post">
+            <div class="form-group">
+                <input type="submit" id="Inteligencia" value="Organizar carpeta" class="btn btn-danger" />
+            </div>
+        </form>
     </div>
-</form>
+</div>
+
 <table class="table">
     <thead>
         <tr>

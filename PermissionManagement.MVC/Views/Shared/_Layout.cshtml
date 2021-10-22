@@ -7,33 +7,43 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/paper-dashboard.css?v=2.0.1" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body id="fondo" class="my-login-page">
     <div class="sidebar" data-color="white" data-active-color="danger">
         <div class="logo text-center">
             <a href="#" class="simple-text logo-normal">
-                FileOrganizerSoft
+                File Organizer Soft
             </a>
         </div>
         <div class="sidebar-wrapper">
             <ul class="nav">
                 <li>
-                    <a class="nav-link text-dark menu" asp-controller="Home" asp-action="Index"><p>Inicio</p></a>
+                    <a class="nav-link text-dark menu" asp-controller="Home" asp-action="Index">
+                        <i class="fas fa-home"></i>
+                        <p>Inicio</p>
+                    </a>
                 </li>
                 <li>
-                    <a class="nav-link text-dark menu" asp-controller="Users" asp-action="Index">Usuarios</a>
+                    <a class="nav-link text-dark menu" asp-controller="Users" asp-action="Index">
+                        <i class="fas fa-users"></i>
+                    Usuarios</a>
                 </li>
                 <li>
-                    <a class="nav-link text-dark menu" asp-controller="FacturasModels" asp-action="Index">Facturas</a>
+                    <a class="nav-link text-dark menu" asp-controller="FacturasModels" asp-action="Index">
+                        <i class="far fa-file"></i>
+                    Facturas</a>
                 </li>
                 <li>
-                    <a class="nav-link text-dark menu" asp-controller="Roles" asp-action="Index">Roles</a>
+                    <a class="nav-link text-dark menu" asp-controller="Roles" asp-action="Index">
+                        <i class="fas fa-dice-d6"></i>
+                    Roles</a>
                 </li>
             </ul>
         </div>
     </div>
     <!--div class="container"-->
-    <div class="main-panel" style="height: 100vh;">
+    <div class="main-panel" style="height: 150vh;">
         <!-- Navbar -->
         <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
             <div class="container-fluid">
@@ -74,11 +84,6 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     <script src="~/js/core/jquery.min.js"></script>
     <script src="~/js/core/popper.min.js"></script>
-    <script src="~/js/plugins/perfect-scrollbar.jquery.min.js"></script>
-    <!-- Chart JS -->
-    <script src="~/js/plugins/chartjs.min.js"></script>
-    <!--  Notifications Plugin    -->
-    <script src="~/js/plugins/bootstrap-notify.js"></script>
     <!-- Control Center for Now Ui Dashboard: parallax effects, scripts for the example pages etc -->
     <script src="~/js/paper-dashboard.min.js?v=2.0.1" type="text/javascript"></script>
     @await RenderSectionAsync("Scripts", required: false)

@@ -1,14 +1,18 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-import sys
-sys.path.append("C:\Program Files")
-sys.path.append("C:\Program Files\IronPython 2.7")
-sys.path.append("C:\Program Files\IronPython 2.7\Lib")
+<<<<<<< HEAD
 import re
 import fitz
+=======
+import sys
+sys.path.append("C:\Program Files\IronPython 2.7")
+sys.path.append("C:\Program Files\IronPython 2.7\Lib")
+sys.path.append("C:\Program Files\IronPython 2.7\Lib\site-packages")
+>>>>>>> 42bb3eab1eebd0694fdbfd36c5ab0e7e6a2bce5b
 import os
 import shutil
-
+import re
+import PyPDF2
 
 Listar = (r"C:\Users\SENA\Documents\GitHub\Senasoft\PermissionManagement.MVC\Uploads\Factura")
 archivos = os.listdir(Listar)
@@ -24,20 +28,25 @@ cuentasCobro = (r"C:\Users\SENA\Documents\GitHub\Senasoft\PermissionManagement.M
 
 for xd in archivos: 
     if ".pdf" in xd:
-        documento = fitz.open(xd)
-        pagina = documento.load_page(0)
-        text=pagina.get_text("text")
+        data = r"{}/{}".format(Listar,xd)
+        documento = open(data)
+        documento = PyPDF2.PdfFileReader(data)
+        pagina = documento.getPage(0)
+        text=(pagina.extractText())
     
 
-        buscar=re.findall(r'Factura Electrónica de Venta', text)
+        #buscar=re.findall(r'Factura Electrónica de Venta', text)
         #NotaC=re.findall(r'Factura', text)
-        documento = ""
-        data = r"{}/{}".format(Listar,xd)
+        #documento = ""
+        #data = r"{}/{}".format(Listar,xd)
         #print(buscar)
         if len(re.findall(r'Factura Electrónica de Venta', text)) > 0 or len(re.findall(r'Factura Electrónica de venta', text)) > 0 or len(re.findall(r'FACTURA ELECTRONICA DE VENTA', text)) > 0 or len(re.findall(r'FACTURA ELECTRÓNICA DE VENTA', text)) > 0 : 
-            new_route = shutil.move(data,Facturas)
-            text = "" 
-            documento = ""
+            if os.path.exists(r"{}/{}".format(Facturas,xd)):
+                pass
+            else:
+                new_route = shutil.move(data,Facturas)
+                text = "" 
+                documento = ""
         elif len(re.findall(r'Nota crédito', text)) > 0 : 
             new_route = shutil.move(data,notaCredito)
             text = "" 
@@ -51,9 +60,12 @@ for xd in archivos:
             text = "" 
             documento = ""
         else:
-            new_route = shutil.move(data,desconocido)
-            text = "" 
-            documento = ""
+            if os.path.exists(r"{}/{}".format(Facturas,xd)):
+                pass
+            else: 
+                new_route = shutil.move(data,Listar)
+                text = "" 
+                documento = ""
 
 
 
