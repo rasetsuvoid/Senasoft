@@ -151,7 +151,7 @@ namespace Senasoft.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            else if (user.IdFactura == 4)
+            else if (user.IdFactura == 5)
             {
                 var ext = Path.GetExtension(file.FileName);
                 var resumeName = "ND" + DateTime.Now.ToString("YYmmdd") + ext;

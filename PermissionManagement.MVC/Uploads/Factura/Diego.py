@@ -1,14 +1,11 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-<<<<<<< HEAD
 import re
-import fitz
-=======
 import sys
 sys.path.append("C:\Program Files\IronPython 2.7")
 sys.path.append("C:\Program Files\IronPython 2.7\Lib")
 sys.path.append("C:\Program Files\IronPython 2.7\Lib\site-packages")
->>>>>>> 42bb3eab1eebd0694fdbfd36c5ab0e7e6a2bce5b
+
 import os
 import shutil
 import re
