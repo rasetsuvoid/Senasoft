@@ -1,12 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @model IEnumerable<IdentityRole>
-    <h1>Roles</h1>
+    <h1 class="text-center">Roles</h1>
     <br />
     <form method="post" asp-action="addrole" asp-controller="roles">
         <div class="input-group">
             <input name="roleName" class="form-control w-25">
             <span class="input-group-btn">
-                <button class="btn btn-info">Add New Role</button>
+                <button class="btn btn-info">Agregar nuevo rol</button>
             </span>
         </div>
     </form>
@@ -14,14 +14,14 @@
         <thead>
             <tr>
                 <th>
-                    Role
+                    Rol
                 </th>
                 <th>
                     Id
                 </th>
 
                 <th style="width:10%">
-                    Actions
+                    Acciones
                 </th>
             </tr>
         </thead>
@@ -39,20 +39,20 @@
                     <td class="text-right">
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Action
+                                Acciones
                             </button>
                             <div class="dropdown-menu shadow animated--grow-in">
                                 <a class="dropdown-item">
-                                    <i class="fas fa-pencil-alt"></i> Edit
+                                    <i class="fas fa-pencil-alt"></i> Editar
                                 </a>
                                 <form class="d-inline">
-                                    <a class="dropdown-item"><i class="fas fa-trash-alt"></i> Delete</a>
+                                    <a class="dropdown-item"><i class="fas fa-trash-alt"></i> Eliminar</a>
                                 </form>
                                 @if (role.Name != "SuperAdmin")
                                 {
 
                                     <a style='margin-right:16px' asp-controller="Permission" asp-action="Index" asp-route-roleId="@role.Id" class="dropdown-item">
-                                        <i class="fas fa-wrench"></i> Manage Permissions
+                                        <i class="fas fa-wrench"></i> Administrar permisos
                                     </a>
                                 }
                             </div>

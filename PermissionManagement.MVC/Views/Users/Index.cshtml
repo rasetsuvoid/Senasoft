@@ -1,18 +1,18 @@
 ﻿@using Microsoft.AspNetCore.Identity;
 @model IEnumerable<ApplicationUser>
-<h1>User List</h1>
+<h1>Lista de usuarios</h1>
 <br />
 <table class="table table-striped" id="userTable">
     <thead>
         <tr>
             <th>
-                User
+                Usuario
             </th>
             <th>
                 Email
             </th>
             <th style="width:10%">
-                Actions
+                Acciones
             </th>
         </tr>
     </thead>
@@ -45,7 +45,7 @@
                         </button>
                         <div class="dropdown-menu shadow animated--grow-in">
                             <a style='margin-right:16px' asp-controller="userroles" asp-action="Index" asp-route-userId="@user.Id" class="dropdown-item">
-                                <i class="fas fa-wrench"></i> Manage Roles
+                                <i class="fas fa-wrench"></i> Administrar Roles
                             </a>
                         </div>
                     </div>

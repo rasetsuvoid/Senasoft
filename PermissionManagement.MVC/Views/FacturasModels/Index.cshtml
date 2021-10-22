@@ -1,57 +1,72 @@
 ﻿@model IEnumerable<Senasoft.Models.FacturasModel>
+@using Microsoft.AspNetCore.Authorization
+@inject IAuthorizationService AuthorizationService
+@using Senasoft.Constants
 
 @{
     ViewData["Title"] = "Documentos";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Documentos</h1>
+<h1 class="text-center">Documentos</h1>
 
 <div class="row">
-    <div class="col-md-3"><p><a asp-action="Create" class="btn btn-warning">Cargar documento</a></p></div>
-    <div class="col-md-3">
+    @if ((AuthorizationService.AuthorizeAsync(User, Permissions.Facturas.Create)).Result.Succeeded)
+    {
+        <div class="col-md-6"><p><a asp-action="Create" class="btn btn-warning">Cargar documento</a></p></div>
+    }
+
+    <div class="col-md-6">
         <form asp-action="Inteligencia" enctype="multipart/form-data" method="post">
             <div class="form-group">
-                <input type="submit" id="Inteligencia" value="Organizar carpeta" class="btn btn-danger" />
+                <input type="submit" id="Inteligencia" value="Organizar carpeta" class="btn btn-danger float-right" />
             </div>
         </form>
     </div>
 </div>
 
-<table class="table">
+<table class="table table-striped" id="userTable">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.FirstName)
+                Usuario
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Resume)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.TiposFacturaModel)
+                Tipo de factura
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
-            </td>
-            <td>
-                <div class="thumbnail"></div>
-                <iframe src="@Url.Content(item.Resume)"></iframe>
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TiposFacturaModel.Id)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    <div class="thumbnail"></div>
+                    <iframe src="@item.Resume"></iframe>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TiposFacturaModel.Nombre)
+                </td>
+                <td class="">
+                    @if ((AuthorizationService.AuthorizeAsync(User, Permissions.Facturas.Edit)).Result.Succeeded)
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Editar</a>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Detalles</a>
+                    @if ((AuthorizationService.AuthorizeAsync(User, Permissions.Facturas.Delete)).Result.Succeeded)
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-secondary">Eliminar</a>
+                    }
+
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

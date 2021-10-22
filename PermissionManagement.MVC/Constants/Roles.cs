@@ -4,6 +4,9 @@
     {
         SuperAdmin,
         Admin,
-        Basic
+        Basic,
+        Editar,
+        Eliminar,
+        Crear
     }
 }

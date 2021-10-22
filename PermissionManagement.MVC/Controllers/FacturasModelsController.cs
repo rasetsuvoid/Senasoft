@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using IronPython.Hosting;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -13,6 +14,7 @@ using Senasoft.Models;
 
 namespace Senasoft.Controllers
 {
+    [Authorize]
     public class FacturasModelsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -21,14 +23,14 @@ namespace Senasoft.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Roles ="Admin, Basic, SuperAdmin")]
         // GET: FacturasModels
         public async Task<IActionResult> Index()
         {
             var applicationDbContext = _context.facturas.Include(f => f.TiposFacturaModel);
             return View(await applicationDbContext.ToListAsync());
         }
-
+        [Authorize(Roles = "Admin, Basic, SuperAdmin")]
         // GET: FacturasModels/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -47,10 +49,10 @@ namespace Senasoft.Controllers
 
             return View(facturasModel);
         }
-        //
+        
         public IActionResult Inteligencia()
         {
-<<<<<<< HEAD
+
             ScriptEngine engine = IronPython.Hosting.Python.CreateEngine();
             ScriptRuntime runtime = engine.Runtime;
             ScriptScope scope = runtime.CreateScope();
@@ -61,16 +63,16 @@ namespace Senasoft.Controllers
             //var ipy = Python.CreateRuntime();
             //var path = @"Uploads///Factura///Diego.py";
             //dynamic op = ipy.UseFile(path);
-=======
+
             var ipy = Python.CreateRuntime();
             var path = @"Uploads///Factura///Diego.py";
             dynamic op = ipy.UseFile(path);
->>>>>>> 42bb3eab1eebd0694fdbfd36c5ab0e7e6a2bce5b
+
 
             return RedirectToAction(nameof(Index));
         }
-       
 
+        [Authorize(Roles = "Admin, SuperAdmin, Crear")]
         // GET: FacturasModels/Create
         public IActionResult Create()
         {
@@ -80,6 +82,7 @@ namespace Senasoft.Controllers
         // POST: FacturasModels/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Admin,SuperAdmin, Crear")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(FacturasModel user, IFormFile file)
@@ -168,7 +171,7 @@ namespace Senasoft.Controllers
                 return View(user);
             }
         }
-
+        [Authorize(Roles = "Admin,SuperAdmin, Editar")]
         // GET: FacturasModels/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
@@ -191,6 +194,7 @@ namespace Senasoft.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, SuperAdmin, Editar")]
         public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,Resume,IdFactura")] FacturasModel facturasModel)
         {
             if (id != facturasModel.Id)
@@ -223,6 +227,7 @@ namespace Senasoft.Controllers
         }
 
         // GET: FacturasModels/Delete/5
+        [Authorize(Roles = "Admin, SuperAdmin, Eliminar")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -240,7 +245,7 @@ namespace Senasoft.Controllers
 
             return View(facturasModel);
         }
-
+        [Authorize(Roles = "Admin, SuperAdmin, Eliminar")]
         // POST: FacturasModels/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]

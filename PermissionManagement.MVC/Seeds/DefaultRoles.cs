@@ -12,6 +12,9 @@ namespace Senasoft.Seeds
             await roleManager.CreateAsync(new IdentityRole(Roles.SuperAdmin.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Roles.Admin.ToString()));
             await roleManager.CreateAsync(new IdentityRole(Roles.Basic.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Roles.Editar.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Roles.Eliminar.ToString()));
+            await roleManager.CreateAsync(new IdentityRole(Roles.Crear.ToString()));
         }
     }
 }

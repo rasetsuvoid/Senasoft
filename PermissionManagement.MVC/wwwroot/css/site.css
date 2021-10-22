@@ -86,3 +86,7 @@ iframe{
     font-size: 0.9em !important;
 }
 
+.form-check input[type="checkbox"], .form-check-radio input[type="radio"] {
+    opacity: 1 !important;
+    visibility: visible !important;
+}
