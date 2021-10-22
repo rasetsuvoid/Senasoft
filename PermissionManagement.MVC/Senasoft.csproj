@@ -23,12 +23,16 @@
   </ItemGroup>
 
   <ItemGroup>
-	  <Folder Include="Uploads\FacturaElectronica\" />
-	  <Folder Include="Uploads\Desconocido\" />
 	  <Folder Include="Uploads\CuentasCobro\" />
+<<<<<<< HEAD
 	  <Folder Include="Uploads\Documentos\" />
 	  <Folder Include="Uploads\Nota_Debito\" />
+=======
+	  <Folder Include="Uploads\Desconocido\" />
+	  <Folder Include="Uploads\FacturaElectronica\" />
+>>>>>>> 42bb3eab1eebd0694fdbfd36c5ab0e7e6a2bce5b
 	  <Folder Include="Uploads\Nota_credito\" />
+	  <Folder Include="Uploads\Nota_Debito\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
