@@ -51,7 +51,7 @@ namespace Senasoft.Controllers
         public IActionResult Inteligencia()
         {
             var ipy = Python.CreateRuntime();
-            var path = @"///Uploads///Factura///Diego.py";
+            var path = @"Uploads///Factura///Diego.py";
             dynamic op = ipy.UseFile(path);
 
             return RedirectToAction(nameof(Index));
