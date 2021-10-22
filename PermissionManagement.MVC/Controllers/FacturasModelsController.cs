@@ -53,17 +53,6 @@ namespace Senasoft.Controllers
         public IActionResult Inteligencia()
         {
 
-            ScriptEngine engine = IronPython.Hosting.Python.CreateEngine();
-            ScriptRuntime runtime = engine.Runtime;
-            ScriptScope scope = runtime.CreateScope();
-            ScriptSource script = engine.CreateScriptSourceFromFile(@"Uploads///Factura///Diego.py");
-            var compiled = script.Compile();
-            compiled.Execute(scope);
-            runtime.Shutdown();
-            //var ipy = Python.CreateRuntime();
-            //var path = @"Uploads///Factura///Diego.py";
-            //dynamic op = ipy.UseFile(path);
-
             var ipy = Python.CreateRuntime();
             var path = @"Uploads///Factura///Diego.py";
             dynamic op = ipy.UseFile(path);

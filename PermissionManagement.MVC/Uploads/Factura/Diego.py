@@ -37,7 +37,7 @@ for xd in archivos:
         #documento = ""
         #data = r"{}/{}".format(Listar,xd)
         #print(buscar)
-        if len(re.findall(r'Factura Electrónica de Venta', text)) > 0 or len(re.findall(r'Factura Electrónica de venta', text)) > 0 or len(re.findall(r'FACTURA ELECTRONICA DE VENTA', text)) > 0 or len(re.findall(r'FACTURA ELECTRÓNICA DE VENTA', text)) > 0 : 
+        if len(re.findall(r'Factura Electrónica de Venta', text)) > 0 or len(re.findall(r'Factura Electrónica de venta', text)) > 0 or len(re.findall(r'FACTURA ELECTRONICA DE VENTA', text)) > 0 or len(re.findall(r'FACTURA ELECTRÓNICA DE VENTA', text)) > 0 or len(re.findall(r'Factura Electronica de Venta', text)) > 0: 
             if os.path.exists(r"{}/{}".format(Facturas,xd)):
                 pass
             else:
