@@ -50,9 +50,16 @@ namespace Senasoft.Controllers
         //
         public IActionResult Inteligencia()
         {
-            var ipy = Python.CreateRuntime();
-            var path = @"///Uploads///Factura///Diego.py";
-            dynamic op = ipy.UseFile(path);
+            ScriptEngine engine = IronPython.Hosting.Python.CreateEngine();
+            ScriptRuntime runtime = engine.Runtime;
+            ScriptScope scope = runtime.CreateScope();
+            ScriptSource script = engine.CreateScriptSourceFromFile(@"Uploads///Factura///Diego.py");
+            var compiled = script.Compile();
+            compiled.Execute(scope);
+            runtime.Shutdown();
+            //var ipy = Python.CreateRuntime();
+            //var path = @"Uploads///Factura///Diego.py";
+            //dynamic op = ipy.UseFile(path);
 
             return RedirectToAction(nameof(Index));
         }
@@ -79,13 +86,13 @@ namespace Senasoft.Controllers
             {
                 var ext = Path.GetExtension(file.FileName);
                 var resumeName = "FACTURA" + DateTime.Now.ToString("YYmmdd") + ext;
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads/Factura/", resumeName);
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads/FacturaElectronica/", resumeName);
                 using (var fStream = new FileStream(path, FileMode.Create))
                 {
                     await file.CopyToAsync(fStream);
                 }
 
-                user.Resume = "Uploads/Factura/" + resumeName;
+                user.Resume = "Uploads/FacturaElectronica/" + resumeName;
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -93,14 +100,59 @@ namespace Senasoft.Controllers
             else if (user.IdFactura == 2)
             {
                 var ext = Path.GetExtension(file.FileName);
-                var resumeName = "DOC" + DateTime.Now.ToString("YYmmdd") + ext;
-                var path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads/Cedulas/", resumeName);
+                var resumeName = "NC" + DateTime.Now.ToString("YYmmdd") + ext;
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads/Nota_credito/", resumeName);
                 using (var fStream = new FileStream(path, FileMode.Create))
                 {
                     await file.CopyToAsync(fStream);
                 }
 
-                user.Resume = "Uploads/Cedulas/" + resumeName;
+                user.Resume = "Uploads/Nota_credito/" + resumeName;
+                _context.Add(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            else if (user.IdFactura == 3)
+            {
+                var ext = Path.GetExtension(file.FileName);
+                var resumeName = "ND" + DateTime.Now.ToString("YYmmdd") + ext;
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads/Nota_debito/", resumeName);
+                using (var fStream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(fStream);
+                }
+
+                user.Resume = "Uploads/Nota_debito/" + resumeName;
+                _context.Add(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            else if (user.IdFactura == 4)
+            {
+                var ext = Path.GetExtension(file.FileName);
+                var resumeName = "ND" + DateTime.Now.ToString("YYmmdd") + ext;
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads/CuentasCobro/", resumeName);
+                using (var fStream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(fStream);
+                }
+
+                user.Resume = "Uploads/CuentasCobro/" + resumeName;
+                _context.Add(user);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            else if (user.IdFactura == 4)
+            {
+                var ext = Path.GetExtension(file.FileName);
+                var resumeName = "ND" + DateTime.Now.ToString("YYmmdd") + ext;
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads/Documentos/", resumeName);
+                using (var fStream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(fStream);
+                }
+
+                user.Resume = "Uploads/Documentos/" + resumeName;
                 _context.Add(user);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

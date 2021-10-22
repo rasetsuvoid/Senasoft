@@ -1,9 +1,5 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
-import sys
-sys.path.append("C:\Program Files")
-sys.path.append("C:\Program Files\IronPython 2.7")
-sys.path.append("C:\Program Files\IronPython 2.7\Lib")
 import re
 import fitz
 import os
